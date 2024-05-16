@@ -117,13 +117,16 @@ public class HolaMundo {
 		case 2:
 			dias = 28;
 			break;
-		case 4, 6, 9, 11:
+		case 4:
+		case 6:
+		case 9:
+		case 11:
 			dias = 30;
 			break;
 		default:
 			dias = 31;
 		}
-		
+
 		System.out.println(dias);
 
 		int opcion = 3;
@@ -133,11 +136,26 @@ public class HolaMundo {
 		case 2 -> System.out.println("DOS");
 		default -> System.out.println("NPI");
 		}
-		
-		dias = switch(mes) {
+
+		dias = switch (mes) {
 		case 2 -> 28;
 		case 4, 6, 9, 11 -> 30;
 		default -> 31;
 		};
+
+		System.out.println(String.format("""
+				El mes %s
+				tiene %s
+				""", dias, mes));
+		
+		int c = 1;
+		while(c <= 10) {
+			System.out.print(c);
+			c++;
+		}
+		
+		for(int i = 1; i <= 10; i++) {
+			System.out.println(i);
+		}
 	}
 }

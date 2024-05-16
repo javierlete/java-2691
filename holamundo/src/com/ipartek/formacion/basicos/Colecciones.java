@@ -6,6 +6,14 @@ import java.util.HashSet;
 
 public class Colecciones {
 	public static void main(String[] args) {
+		ejemploListas();
+		
+		ejemploConjuntos();
+		
+		ejemploMapas();
+	}
+	
+	private static void ejemploListas() {
 		var lista = new ArrayList<String>();
 		
 		lista.add("Uno");
@@ -20,10 +28,18 @@ public class Colecciones {
 			System.out.println(dato);
 		}
 		
+		var i = lista.iterator();
+		
+		while(i.hasNext()) {
+			System.out.println(i.next());
+		}
+		
 		System.out.println(lista.get(0));
 		
 		System.out.println(lista);
-		
+	}
+
+	private static void ejemploConjuntos() {
 		var conjunto = new HashSet<String>();
 		
 		conjunto.add("Uno");
@@ -32,7 +48,9 @@ public class Colecciones {
 		conjunto.add("Tres");
 		
 		System.out.println(conjunto);
-		
+	}
+
+	private static void ejemploMapas() {
 		var mapa = new HashMap<String, Integer>();
 		
 		mapa.put("Uno", 1);
