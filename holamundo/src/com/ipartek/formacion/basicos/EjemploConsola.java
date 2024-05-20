@@ -1,34 +1,24 @@
 package com.ipartek.formacion.basicos;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+import static com.ipartek.formacion.bibliotecas.Consola.DTF;
+import static com.ipartek.formacion.bibliotecas.Consola.leerInt;
+import static com.ipartek.formacion.bibliotecas.Consola.leerLocalDate;
+import static com.ipartek.formacion.bibliotecas.Consola.leerString;
+import static com.ipartek.formacion.bibliotecas.Consola.pl;
 
 public class EjemploConsola {
 
 	public static void main(String[] args) {
-		var dtf = DateTimeFormatter.ofPattern("d/M/yyyy");
+		Integer numero = leerInt("Dime un número");
 		
-		var sc = new Scanner(System.in);
+		pl(numero);
 		
-		System.out.print("Dime un número: ");
+		var nombre = leerString("¿Cómo te llamas?");
 		
-		var numero = Integer.parseInt(sc.nextLine());
+		pl("Hola, " + nombre);
 		
-		System.out.println(numero);
+		var fecha = leerLocalDate("Dime una fecha");
 		
-		System.out.print("¿Cómo te llamas? ");
-		
-		var nombre = sc.nextLine();
-		
-		System.out.println("Hola, " + nombre);
-		
-		System.out.print("Fecha: ");
-		
-		var fecha = LocalDate.parse(sc.nextLine(), dtf);
-		
-		System.out.println(fecha.format(dtf));
-		
-		sc.close();
+		pl(fecha.format(DTF));
 	}
 }
