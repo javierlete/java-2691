@@ -1,14 +1,17 @@
 package com.ipartek.formacion.oop.pruebas;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import com.ipartek.formacion.oop.pojos.Empleado;
+import com.ipartek.formacion.oop.pojos.EmpleadoIndefinido;
+import com.ipartek.formacion.oop.pojos.EmpleadoPorHoras;
 import com.ipartek.formacion.oop.pojos.Local;
 import com.ipartek.formacion.oop.pojos.Persona;
 
 public class EmpleadoPrueba {
 	public static void main(String[] args) {
-		var e = new Empleado("Prueba", LocalDate.of(2000, 1, 2), "12345678A", "1234123412341234");
+		Empleado e = new EmpleadoIndefinido(null, "Prueba", LocalDate.of(2000, 1, 2), "12345678A", "1234123412341234", 14, new BigDecimal(34567));
 
 		System.out.println(e);
 
@@ -42,12 +45,20 @@ public class EmpleadoPrueba {
 		Local l = new Local(e);
 		
 		l.agregarAsistente(p2);
-		l.agregarAsistente(new Empleado("adsfdas", LocalDate.now(), "12345687", "12341234"));
+		l.agregarAsistente(new EmpleadoPorHoras(null, "adsfdas", LocalDate.now(), "12345687", "12341234", 60, new BigDecimal(34)));
 		
 		System.out.println(l.getGerente());
 		
 		for(Persona persona: l.getAsistentes()) {
-			System.out.println(persona);
+			System.out.print(persona);
+			
+			if(persona instanceof Empleado empleado) {
+				System.out.print(": " + empleado.getSueldoMensual());
+			}
+			
+			System.out.println();
 		}
+		
+		System.out.println(l.costeNominas());
 	}
 }

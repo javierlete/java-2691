@@ -1,9 +1,10 @@
 package com.ipartek.formacion.oop.pojos;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Empleado extends Persona {
+public abstract class Empleado extends Persona {
 	private String dni;
 	private String nss;
 
@@ -17,6 +18,8 @@ public class Empleado extends Persona {
 	public Empleado(String nombre, LocalDate fechaNacimiento, String dni, String nss) {
 		this(null, nombre, fechaNacimiento, dni, nss);
 	}
+	
+	public abstract BigDecimal getSueldoMensual();
 
 	public String getDni() {
 		return dni;

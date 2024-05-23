@@ -1,5 +1,6 @@
 package com.ipartek.formacion.oop.pojos;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Local {
@@ -37,5 +38,21 @@ public class Local {
 	@Override
 	public String toString() {
 		return "Local [id=" + id + ", gerente=" + gerente + ", asistentes=" + asistentes + "]";
+	}
+	
+	public BigDecimal costeNominas() {
+		BigDecimal coste = BigDecimal.ZERO;
+		
+		if(gerente instanceof Empleado e) {
+			coste = coste.add(e.getSueldoMensual());
+		}
+		
+		for(Persona p: asistentes) {
+			if(p instanceof Empleado e) {
+				coste = coste.add(e.getSueldoMensual());
+			}
+		}
+		
+		return coste;
 	}
 }
