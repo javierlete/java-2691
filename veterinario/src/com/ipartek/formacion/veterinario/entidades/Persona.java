@@ -1,8 +1,12 @@
 package com.ipartek.formacion.veterinario.entidades;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Persona {
+public class Persona implements Serializable {
+
+	private static final long serialVersionUID = -4833836082202489578L;
+
 	private Long id;
 	private String nombre;
 	private String apellidos;

@@ -5,7 +5,7 @@ import java.util.TreeMap;
 import com.ipartek.formacion.veterinario.entidades.Empleado;
 
 public class DaoEmpleadoTreeMap implements DaoEmpleado {
-	private static final TreeMap<Long, Empleado> empleados = new TreeMap<>();
+	protected static TreeMap<Long, Empleado> empleados = new TreeMap<>();
 
 	@Override
 	public Iterable<Empleado> obtenerTodos() {
@@ -50,6 +50,50 @@ public class DaoEmpleadoTreeMap implements DaoEmpleado {
 		// e -> nif.equals(e.getNif()) : Para cada empleado e comprueba si tiene un nif igual al que se busca. En la colección final, sólo quedan los que en esta expresión dan true
 		// findFirst() : De todos los elementos que pueden salir del filtro sólo pedimos el primero que puede o no existir (Optional)
 		// orElse() : Convertimos el optional en un valor de referencia normal, o null en el caso de que no tenga valor
-		return empleados.values().stream().filter(e -> nif.equals(e.getNif())).findFirst().orElse(null);
+		return empleados.values().stream().filter(e -> nif.equals(e.getNif()))
+				.findFirst().orElse(null);
+
+		// Clases anónimas
+//		return empleados.values().stream().filter(new Predicate<Empleado>() {
+//			@Override
+//			public boolean test(Empleado e) {
+//				return e.getNif() == nif;
+//			}
+//		}).findFirst().orElse(null);
+
+		
+		// Java 1.0 y 1.1
+//		var predicado = new Predicado(nif);
+//		return empleados.values().stream().filter(predicado).findFirst().orElse(null);
 	}
+	
+	// Java 1.1
+//	static class Predicado implements java.util.function.Predicate<Empleado> {
+//		private String nif;
+//		
+//		public Predicado(String nif) {
+//			this.nif = nif;
+//		}
+//		
+//		@Override
+//		public boolean test(Empleado e) {
+//			return e.getNif() == nif;
+//		}
+//	}
+	
 }
+
+
+// Java 1.0
+//class Predicado implements java.util.function.Predicate<Empleado> {
+//	private String nif;
+//	
+//	public Predicado(String nif) {
+//		this.nif = nif;
+//	}
+//	
+//	@Override
+//	public boolean test(Empleado e) {
+//		return e.getNif() == nif;
+//	}
+//}
