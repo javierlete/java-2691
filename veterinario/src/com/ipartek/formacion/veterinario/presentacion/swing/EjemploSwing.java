@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class EjemploAccesoDatosSwing {
+public class EjemploSwing {
 
 	private JFrame frame;
 	private JTextField tfNombre;
@@ -22,7 +22,7 @@ public class EjemploAccesoDatosSwing {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EjemploAccesoDatosSwing window = new EjemploAccesoDatosSwing();
+					EjemploSwing window = new EjemploSwing();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class EjemploAccesoDatosSwing {
 	/**
 	 * Create the application.
 	 */
-	public EjemploAccesoDatosSwing() {
+	public EjemploSwing() {
 		
 		initialize();
 		

@@ -23,6 +23,22 @@ public class Empleado extends Persona implements Serializable {
 	public String toString() {
 		return "Empleado [nss=" + nss + ", sueldoMensual=" + sueldoMensual + ", toString()=" + super.toString() + "]";
 	}
+
+	public String getNss() {
+		return nss;
+	}
+
+	public void setNss(String nss) {
+		this.nss = nss;
+	}
+
+	public BigDecimal getSueldoMensual() {
+		return sueldoMensual;
+	}
+
+	public void setSueldoMensual(BigDecimal sueldoMensual) {
+		this.sueldoMensual = sueldoMensual;
+	}
 	
 	
 }
