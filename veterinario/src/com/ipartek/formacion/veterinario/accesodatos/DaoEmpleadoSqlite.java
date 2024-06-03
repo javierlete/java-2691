@@ -25,6 +25,12 @@ public class DaoEmpleadoSqlite implements DaoEmpleado {
 	private static final String SQL_UPDATE = "UPDATE empleados SET nombre=?, apellidos=?, telefono=?, nif=?, nss=?, sueldo_mensual=? WHERE id = ?";
 	private static final String SQL_DELETE = "DELETE FROM empleados WHERE id = ?";
 
+	// SINGLETON
+	private DaoEmpleadoSqlite() {}
+	private static DaoEmpleadoSqlite INSTANCIA = new DaoEmpleadoSqlite();
+	public static DaoEmpleadoSqlite getInstancia() { return INSTANCIA; }
+	// FIN SINGLETON
+	
 	private Connection conectar() {
 		try {
 			return DriverManager.getConnection(URL, USER, PASS);

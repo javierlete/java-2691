@@ -8,7 +8,7 @@ import com.ipartek.formacion.veterinario.entidades.Empleado;
 
 public class AccesoDatosPruebas {
 	public static void main(String[] args) {
-		DaoEmpleado dao = new DaoEmpleadoSqlite(); //Fichero(); //TreeMap();
+		DaoEmpleado dao = DaoEmpleadoSqlite.getInstancia(); //Fichero(); //TreeMap();
 		
 		for(var e: dao.obtenerTodos()) {
 			System.out.println("Antes: " + e);

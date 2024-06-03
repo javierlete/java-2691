@@ -41,7 +41,8 @@ public class VeterinarioPresentacion {
 	private JTextField tfSueldoMensual;
 	private JTextField tfSeguridadSocial;
 	private DefaultTableModel modelo;
-	private final static DaoEmpleado dao = new DaoEmpleadoSqlite(); //Fichero();
+	
+	private final static DaoEmpleado dao = DaoEmpleadoSqlite.getInstancia(); //Fichero();
 
 	/**
 	 * Launch the application.
