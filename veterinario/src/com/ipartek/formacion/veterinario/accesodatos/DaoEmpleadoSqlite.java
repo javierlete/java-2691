@@ -1,7 +1,6 @@
 package com.ipartek.formacion.veterinario.accesodatos;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,12 +9,7 @@ import java.util.ArrayList;
 
 import com.ipartek.formacion.veterinario.entidades.Empleado;
 
-public class DaoEmpleadoSqlite implements DaoEmpleado {
-
-//	private static final String URL = "jdbc:mysql://localhost:3306/veterinario";
-	private static final String URL = "jdbc:sqlite:sql/veterinario.db";
-	private static final String USER = "root";
-	private static final String PASS = "admin";
+public class DaoEmpleadoSqlite extends DaoSqlite implements DaoEmpleado {
 
 	private static final String SQL_SELECT = "SELECT * FROM empleados";
 	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE id = ?";
@@ -30,14 +24,6 @@ public class DaoEmpleadoSqlite implements DaoEmpleado {
 	private static DaoEmpleadoSqlite INSTANCIA = new DaoEmpleadoSqlite();
 	public static DaoEmpleadoSqlite getInstancia() { return INSTANCIA; }
 	// FIN SINGLETON
-	
-	private Connection conectar() {
-		try {
-			return DriverManager.getConnection(URL, USER, PASS);
-		} catch (SQLException e) {
-			throw new AccesoDatosException("No ha funcionado la conexión a la base de datos", e);
-		}
-	}
 
 	@Override
 	public Iterable<Empleado> obtenerTodos() {
