@@ -3,12 +3,12 @@ package com.ipartek.formacion.veterinario.pruebas;
 import java.math.BigDecimal;
 
 import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleado;
-import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoFichero;
+import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoSqlite;
 import com.ipartek.formacion.veterinario.entidades.Empleado;
 
 public class AccesoDatosPruebas {
 	public static void main(String[] args) {
-		DaoEmpleado dao = new DaoEmpleadoFichero(); //TreeMap();
+		DaoEmpleado dao = new DaoEmpleadoSqlite(); //Fichero(); //TreeMap();
 		
 		for(var e: dao.obtenerTodos()) {
 			System.out.println("Antes: " + e);
