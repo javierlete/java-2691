@@ -1,7 +1,9 @@
 package com.ipartek.formacion.veterinario.presentacion.swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -19,14 +21,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleado;
-import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoFichero;
+import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoSqlite;
 import com.ipartek.formacion.veterinario.entidades.Empleado;
-import javax.swing.SwingConstants;
-import java.awt.FlowLayout;
-import java.awt.Color;
 
 public class VeterinarioPresentacion {
 
@@ -41,7 +41,7 @@ public class VeterinarioPresentacion {
 	private JTextField tfSueldoMensual;
 	private JTextField tfSeguridadSocial;
 	private DefaultTableModel modelo;
-	private final static DaoEmpleado dao = new DaoEmpleadoFichero();
+	private final static DaoEmpleado dao = new DaoEmpleadoSqlite(); //Fichero();
 
 	/**
 	 * Launch the application.
