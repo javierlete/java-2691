@@ -10,6 +10,16 @@ public class DaoSqlite {
 	private static final String USER = "root";
 	private static final String PASS = "admin";
 	
+	// Necesario para que se pueda utilizar desde Tomcat
+	static {
+		try {
+			Class.forName("org.sqlite.JDBC");
+		} catch (ClassNotFoundException e) {
+			throw new AccesoDatosException("No se ha encontrado el driver de SQLite", e);
+		}
+	}
+	// Fin
+	
 	protected Connection conectar() {
 		try {
 			return DriverManager.getConnection(URL, USER, PASS);
