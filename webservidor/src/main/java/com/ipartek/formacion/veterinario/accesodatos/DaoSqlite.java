@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DaoSqlite {
 //	private static final String URL = "jdbc:mysql://localhost:3306/veterinario";
-	private static final String URL = "jdbc:sqlite:sql/veterinario.db";
+	private static final String URL = "jdbc:sqlite:C:\\Users\\curso.IPARTEKAULA\\git\\java-2691\\webservidor\\src\\main\\webapp\\WEB-INF\\sql\\veterinario.db";
 	private static final String USER = "root";
 	private static final String PASS = "admin";
 	
