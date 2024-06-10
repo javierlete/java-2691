@@ -2,6 +2,7 @@ package com.ipartek.formacion.veterinario.entidades;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.TreeMap;
 
 public class Persona implements Serializable {
 
@@ -12,6 +13,8 @@ public class Persona implements Serializable {
 	private String apellidos;
 	private String nif;
 	private String telefono;
+	
+	private TreeMap<String, String> errores = new TreeMap<>();
 
 	public Persona(Long id, String nombre, String apellidos, String nif, String telefono) {
 		setId(id);
@@ -36,6 +39,10 @@ public class Persona implements Serializable {
 	}
 
 	public void setNombre(String nombre) {
+		if(nombre.isBlank()) {
+			errores.put("nombre", "El nombre debe estar rellenado");
+		}
+		
 		this.nombre = nombre;
 	}
 
@@ -44,6 +51,9 @@ public class Persona implements Serializable {
 	}
 
 	public void setApellidos(String apellidos) {
+		if(apellidos.isBlank()) {
+			errores.put("apellidos", "Los apellidos se deben rellenar");
+		}
 		this.apellidos = apellidos;
 	}
 
@@ -61,6 +71,10 @@ public class Persona implements Serializable {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public TreeMap<String, String> getErrores() {
+		return errores;
 	}
 
 	@Override
