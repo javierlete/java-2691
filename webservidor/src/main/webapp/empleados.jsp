@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="jakarta.tags.core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Empleados</title>
-</head>
-<body>
+<%@ include file="/WEB-INF/includes/cabecera.jsp"%>
 
+<main>
 	<h1>Empleados</h1>
 
 	<table>
@@ -52,5 +46,6 @@
 
 		</tfoot>
 	</table>
-</body>
-</html>
+	
+</main>
+<%@ include file="/WEB-INF/includes/pie.jsp"%>
