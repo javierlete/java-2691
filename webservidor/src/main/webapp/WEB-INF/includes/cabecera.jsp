@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,8 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm bg-dark sticky-top" data-bs-theme="dark">
+	<nav class="navbar navbar-expand-sm bg-dark sticky-top"
+		data-bs-theme="dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Superaplicación</a>
 			<button class="navbar-toggler" type="button"
@@ -32,10 +33,28 @@
 				<ul class="navbar-nav me-auto mb-2 mb-sm-0">
 					<li class="nav-item"><a class="nav-link" href="empleados">Empleados</a></li>
 				</ul>
-				
+
 				<ul class="navbar-nav mb-2 mb-sm-0">
 					<li class="nav-item"><a class="nav-link" href="formulario">Formulario</a></li>
-				</ul>				
+					<c:choose>
+						<c:when test="${sessionScope.email != null}">
+							<li class="navbar-text">${sessionScope.email}</li>
+							<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
 			</div>
 		</div>
 	</nav>
+
+	<c:if test="${error != null}">
+		<div class="alert alert-danger alert-dismissible fade show"
+			role="alert">
+			${error}
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+	</c:if>
