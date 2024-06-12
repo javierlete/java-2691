@@ -8,9 +8,9 @@
 </head>
 <body>
 
-	<% for(int i = 1; i <= 6; i++) { %>
+	<%-- <% for(int i = 1; i <= 6; i++) { %>
 		<h<%=i %>>Prueba <%=LocalDateTime.now()%></h<%=i %>>
-	<% } %>
+	<% } %> --%>
 
 </body>
 </html>

@@ -32,7 +32,7 @@
 		<div class="row mb-3">
 			<label for="telefono" class="col-sm-2 col-form-label">Teléfono</label>
 			<div class="col-sm">
-				<input type="" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" value="${empleado.telefono}">
+				<input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" value="${empleado.telefono}">
 			</div>
 		</div>
 		<div class="row mb-3">
