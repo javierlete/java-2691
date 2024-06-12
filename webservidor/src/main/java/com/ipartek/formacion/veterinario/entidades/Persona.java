@@ -13,8 +13,8 @@ public class Persona implements Serializable {
 	private String apellidos;
 	private String nif;
 	private String telefono;
-	
-	private TreeMap<String, String> errores = new TreeMap<>();
+
+	protected TreeMap<String, String> errores = new TreeMap<>();
 
 	public Persona(Long id, String nombre, String apellidos, String nif, String telefono) {
 		setId(id);
@@ -24,8 +24,9 @@ public class Persona implements Serializable {
 		setTelefono(telefono);
 	}
 
-	public Persona() {}
-	
+	public Persona() {
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -39,10 +40,10 @@ public class Persona implements Serializable {
 	}
 
 	public void setNombre(String nombre) {
-		if(nombre.isBlank()) {
+		if (nombre.isBlank()) {
 			errores.put("nombre", "El nombre debe estar rellenado");
 		}
-		
+
 		this.nombre = nombre;
 	}
 
@@ -51,7 +52,7 @@ public class Persona implements Serializable {
 	}
 
 	public void setApellidos(String apellidos) {
-		if(apellidos.isBlank()) {
+		if (apellidos.isBlank()) {
 			errores.put("apellidos", "Los apellidos se deben rellenar");
 		}
 		this.apellidos = apellidos;
@@ -62,6 +63,9 @@ public class Persona implements Serializable {
 	}
 
 	public void setNif(String nif) {
+		if (nif != null && !nif.matches("^[XYZ\\d]\\d{7}[A-Z]$")) {
+			errores.put("nif", "El NIF no concuerda con el formato");
+		}
 		this.nif = nif;
 	}
 

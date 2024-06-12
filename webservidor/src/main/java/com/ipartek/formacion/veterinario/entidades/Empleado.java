@@ -13,8 +13,8 @@ public class Empleado extends Persona implements Serializable {
 	public Empleado(Long id, String nombre, String apellidos, String nif, String telefono, String nss,
 			BigDecimal sueldoMensual) {
 		super(id, nombre, apellidos, nif, telefono);
-		this.nss = nss;
-		this.sueldoMensual = sueldoMensual;
+		setNss(nss);
+		setSueldoMensual(sueldoMensual);
 	}
 	
 	public Empleado() {}
@@ -29,6 +29,9 @@ public class Empleado extends Persona implements Serializable {
 	}
 
 	public void setNss(String nss) {
+		if(nss != null && !nss.matches("^\\d{11}$")) {
+			errores.put("nss", "El número de la seguridad social debe tener 11 dígitos");
+		}
 		this.nss = nss;
 	}
 
