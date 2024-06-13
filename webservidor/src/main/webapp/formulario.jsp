@@ -4,7 +4,7 @@
 
 <main class="container">
 
-	<form action="formulario" method="post" class="needs-validation" novalidate>
+	<form action="admin/formulario" method="post" class="needs-validation" novalidate>
 		<div class="row mb-3">
 			<label for="id" class="col-sm-2 col-form-label">Id</label>
 			<div class="col-sm">

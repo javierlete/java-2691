@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/empleados")
+@WebServlet("/admin/empleados")
 public class EmpleadosServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3884456527233712355L;
@@ -24,7 +24,7 @@ public class EmpleadosServlet extends HttpServlet {
 		
 		request.setAttribute("empleados", empleados);
 		
-		request.getRequestDispatcher("empleados.jsp").forward(request, response);
+		request.getRequestDispatcher("/empleados.jsp").forward(request, response);
 	}
 
 }

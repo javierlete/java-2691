@@ -28,7 +28,7 @@
 					<td>${e.nif}</td>
 					<td>${e.nss}</td>
 					<td class="text-end">${e.sueldoMensual}</td>
-					<td><a class="btn btn-sm btn-primary" href="formulario?id=${e.id}">Editar</a> <a class="btn btn-sm btn-danger" href="borrar?id=${e.id}">Borrar</a></td>
+					<td><a class="btn btn-sm btn-primary" href="admin/formulario?id=${e.id}">Editar</a> <a class="btn btn-sm btn-danger" href="admin/borrar?id=${e.id}">Borrar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -41,7 +41,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><a class="btn btn-sm btn-primary" href="formulario">Añadir</a></td>
+				<td><a class="btn btn-sm btn-primary" href="admin/formulario">Añadir</a></td>
 			</tr>
 
 		</tfoot>

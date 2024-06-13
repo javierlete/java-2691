@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/borrar")
+@WebServlet("/admin/borrar")
 public class BorrarServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3884456527233712355L;
@@ -26,7 +26,7 @@ public class BorrarServlet extends HttpServlet {
 		
 		dao.borrar(id);
 		
-		response.sendRedirect(request.getContextPath() + "/empleados");
+		response.sendRedirect(request.getContextPath() + "/admin/empleados");
 	}
 
 }

@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 
 	@Override
@@ -37,14 +37,14 @@ public class LoginServlet extends HttpServlet {
 			
 			session.setAttribute("email", email);
 			
-			response.sendRedirect(request.getContextPath() + "/empleados");
+			response.sendRedirect(request.getContextPath() + "/admin/empleados");
 		} else {
 			// 5. PREPARAR EL MODELO PARA LA SIGUIENTE VISTA
 			request.setAttribute("error", "Usuario o contraseña incorrectos");
 			request.setAttribute("email", email);
 			
 			// 6. SALTAR A LA SIGUIENTE VISTA (FORWARD/REDIRECT)
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 		
 	}

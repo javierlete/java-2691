@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/formulario")
+@WebServlet("/admin/formulario")
 public class FormularioServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3884456527233712355L;
@@ -32,7 +32,7 @@ public class FormularioServlet extends HttpServlet {
 			request.setAttribute("empleado", empleado);
 		}
 
-		request.getRequestDispatcher("formulario.jsp").forward(request, response);
+		request.getRequestDispatcher("/formulario.jsp").forward(request, response);
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class FormularioServlet extends HttpServlet {
 		if(empleado.getErrores().size() > 0) {
 			request.setAttribute("empleado", empleado);
 			
-			request.getRequestDispatcher("formulario.jsp").forward(request, response);
+			request.getRequestDispatcher("/formulario.jsp").forward(request, response);
 			
 			return;
 		}
@@ -74,7 +74,7 @@ public class FormularioServlet extends HttpServlet {
 		// request.setAttribute("clave", valor);
 
 		// 6. SALTAR A LA SIGUIENTE VISTA (FORWARD/REDIRECT)
-		response.sendRedirect(request.getContextPath() + "/empleados");
+		response.sendRedirect(request.getContextPath() + "/admin/empleados");
 		// request.getRequestDispatcher("pantalla.jsp").forward(request, response);
 	}
 
