@@ -5,13 +5,15 @@
 
     <persistence-unit name="com.ipartek.formacion.veterinario.entidades">
 
+        <class>com.ipartek.formacion.veterinario.entidades.Producto</class>
         <class>com.ipartek.formacion.veterinario.entidades.Empleado</class>
 
         <properties>
             <!-- Database connection settings -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:hibernate.db" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:C:/sqlite/hibernate.db" />
             <property name="jakarta.persistence.jdbc.user" value="sa" />
             <property name="jakarta.persistence.jdbc.password" value="" />
+            <property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC" />
 
             <!-- Automatically export the schema -->
             <property name="jakarta.persistence.schema-generation.database.action" value="create" />
