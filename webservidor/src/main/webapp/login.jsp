@@ -9,14 +9,14 @@
 			<label for="nombre" class="col-sm-2 col-form-label">Email</label>
 			<div class="col-sm">
 				<input type="email" class="form-control" id="email" name="email"
-					placeholder="Email" value="${requestScope.email}">
+					placeholder="Email" value="javier@email.net">
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="apellidos" class="col-sm-2 col-form-label">Contraseña</label>
 			<div class="col-sm">
 				<input type="password" class="form-control" id="password"
-					name="password" placeholder="Contraseña">
+					name="password" placeholder="Contraseña" value="contra">
 			</div>
 		</div>
 
