@@ -2,6 +2,8 @@ package com.ipartek.formacion.veterinario.presentacion.controladores;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Set;
+import java.util.TreeMap;
 
 import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleado;
 import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoJpa;
@@ -12,6 +14,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 @WebServlet("/admin/formulario")
 public class FormularioServlet extends HttpServlet {
@@ -55,7 +61,19 @@ public class FormularioServlet extends HttpServlet {
 		Empleado empleado = new Empleado(id, nombre, apellidos, nif, telefono, nss, sueldoMensual);
 
 		// 4. LÓGICA DE NEGOCIO
-		if(empleado.getErrores().size() > 0) {
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        
+        Set<ConstraintViolation<Empleado>> constraintViolations = validator.validate(empleado);
+        
+        TreeMap<String, String> errores = new TreeMap<>();
+        
+        for(ConstraintViolation<Empleado> constraintViolation: constraintViolations) {
+        	errores.put(constraintViolation.getPropertyPath().toString(), constraintViolation.getMessage());
+        }
+        
+		if(errores.size() > 0) {
+			request.setAttribute("errores", errores);
 			request.setAttribute("empleado", empleado);
 			
 			request.getRequestDispatcher("/formulario.jsp").forward(request, response);
