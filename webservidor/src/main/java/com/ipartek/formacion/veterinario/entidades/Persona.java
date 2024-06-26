@@ -1,7 +1,6 @@
 package com.ipartek.formacion.veterinario.entidades;
 
 import java.io.Serializable;
-import java.util.TreeMap;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,13 +8,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+
 //LOMBOK
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @SuperBuilder
 
 //JPA
@@ -28,50 +33,23 @@ public class Persona implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(length = 50, nullable = false)
+
+	@NotNull
+	@NotBlank
+	@Size(max = 50)
 	private String nombre;
-	
-	@Column(length = 100)
+
+	@NotNull
+	@NotBlank
+	@Size(max = 100)
 	private String apellidos;
-	
+
+	@Pattern(regexp = "^[XYZ\\d]\\d{7}[A-Z]$", message = "Se debe utilizar el formato de NIF correcto")
 	@Column(columnDefinition = "CHAR(9)")
 	private String nif;
-	
+
+	@Pattern(regexp = "^\\d{9}$")
 	@Column(columnDefinition = "CHAR(9)")
 	private String telefono;
-
-	@Transient
-	protected final TreeMap<String, String> errores = new TreeMap<>();
-
-	public Persona(Long id, String nombre, String apellidos, String nif, String telefono) {
-		setId(id);
-		setNombre(nombre);
-		setApellidos(apellidos);
-		setNif(nif);
-		setTelefono(telefono);
-	}
-
-	public void setNombre(String nombre) {
-		if (nombre.isBlank()) {
-			errores.put("nombre", "El nombre debe estar rellenado");
-		}
-
-		this.nombre = nombre;
-	}
-
-	public void setApellidos(String apellidos) {
-		if (apellidos.isBlank()) {
-			errores.put("apellidos", "Los apellidos se deben rellenar");
-		}
-		this.apellidos = apellidos;
-	}
-
-	public void setNif(String nif) {
-		if (nif != null && !nif.matches("^[XYZ\\d]\\d{7}[A-Z]$")) {
-			errores.put("nif", "El NIF no concuerda con el formato");
-		}
-		this.nif = nif;
-	}
 
 }
