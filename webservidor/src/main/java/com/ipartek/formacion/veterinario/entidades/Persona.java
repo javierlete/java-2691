@@ -1,20 +1,48 @@
 package com.ipartek.formacion.veterinario.entidades;
 
 import java.io.Serializable;
-import java.util.Objects;
 import java.util.TreeMap;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+//LOMBOK
+@Data
+@NoArgsConstructor
+@SuperBuilder
+
+//JPA
+@Entity
+@Table(name = "personas")
 public class Persona implements Serializable {
 
 	private static final long serialVersionUID = -4833836082202489578L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(length = 50, nullable = false)
 	private String nombre;
+	
+	@Column(length = 100)
 	private String apellidos;
+	
+	@Column(columnDefinition = "CHAR(9)")
 	private String nif;
+	
+	@Column(columnDefinition = "CHAR(9)")
 	private String telefono;
 
-	protected TreeMap<String, String> errores = new TreeMap<>();
+	@Transient
+	protected final TreeMap<String, String> errores = new TreeMap<>();
 
 	public Persona(Long id, String nombre, String apellidos, String nif, String telefono) {
 		setId(id);
@@ -22,21 +50,6 @@ public class Persona implements Serializable {
 		setApellidos(apellidos);
 		setNif(nif);
 		setTelefono(telefono);
-	}
-
-	public Persona() {
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -47,10 +60,6 @@ public class Persona implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public String getApellidos() {
-		return apellidos;
-	}
-
 	public void setApellidos(String apellidos) {
 		if (apellidos.isBlank()) {
 			errores.put("apellidos", "Los apellidos se deben rellenar");
@@ -58,52 +67,11 @@ public class Persona implements Serializable {
 		this.apellidos = apellidos;
 	}
 
-	public String getNif() {
-		return nif;
-	}
-
 	public void setNif(String nif) {
 		if (nif != null && !nif.matches("^[XYZ\\d]\\d{7}[A-Z]$")) {
 			errores.put("nif", "El NIF no concuerda con el formato");
 		}
 		this.nif = nif;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-	public TreeMap<String, String> getErrores() {
-		return errores;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(apellidos, id, nif, nombre, telefono);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Persona other = (Persona) obj;
-		return Objects.equals(apellidos, other.apellidos) && Objects.equals(id, other.id)
-				&& Objects.equals(nif, other.nif) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(telefono, other.telefono);
-	}
-
-	@Override
-	public String toString() {
-		return "Persona [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nif=" + nif + ", telefono="
-				+ telefono + "]";
 	}
 
 }
