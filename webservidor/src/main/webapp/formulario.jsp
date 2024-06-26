@@ -16,19 +16,19 @@
 			<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
 			<div class="col-sm">
 				<input type="text"
-					class="form-control ${empleado.errores.nombre != null ? 'is-invalid' : ''}"
+					class="form-control ${errores.nombre != null ? 'is-invalid' : ''}"
 					id="nombre" name="nombre" placeholder="Nombre"
-					value="${empleado.nombre}"> <span class="invalid-feedback">${empleado.errores.nombre}</span>
+					value="${empleado.nombre}"> <span class="invalid-feedback">${errores.nombre}</span>
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
 			<div class="col-sm">
 				<input type="text"
-					class="form-control ${empleado.errores.apellidos != null ? 'is-invalid' : ''}"
+					class="form-control ${errores.apellidos != null ? 'is-invalid' : ''}"
 					id="apellidos" name="apellidos" placeholder="Apellidos"
 					value="${empleado.apellidos}"> <span
-					class="invalid-feedback">${empleado.errores.apellidos}</span>
+					class="invalid-feedback">${errores.apellidos}</span>
 			</div>
 		</div>
 		<div class="row mb-3">
@@ -42,15 +42,15 @@
 			<label for="nif" class="col-sm-2 col-form-label">NIF</label>
 			<div class="col-sm">
 				<input type="text" pattern="^[XYZ\d]\d{7}[A-Z]$"
-					class="form-control ${empleado.errores.nif != null ? 'is-invalid' : ''}"
+					class="form-control ${errores.nif != null ? 'is-invalid' : ''}"
 					id="nif" name="nif" placeholder="NIF" value="${empleado.nif}">
-				<span class="invalid-feedback">${empleado.errores.nif}</span>
+				<span class="invalid-feedback">${errores.nif}</span>
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="nss" class="col-sm-2 col-form-label">NSS</label>
 			<div class="col-sm">
-				<input type="text" pattern="^\d{11}$" class="form-control ${empleado.errores.nss != null ? 'is-invalid' : ''}" id="nss"
+				<input type="text" pattern="^\d{11}$" class="form-control ${errores.nss != null ? 'is-invalid' : ''}" id="nss"
 					name="nss" placeholder="NSS" value="${empleado.nss}">
 				<span class="invalid-feedback">El número de la SS debe tener 11 dígitos</span>
 			</div>
