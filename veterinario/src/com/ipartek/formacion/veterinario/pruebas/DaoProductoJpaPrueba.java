@@ -13,5 +13,9 @@ public class DaoProductoJpaPrueba {
 		Producto producto = dao.insertar(Producto.builder().nombre("Nuevo").precio(new BigDecimal(1234.45)).build());
 		
 		System.out.println(producto);
+		
+		for(Producto p: dao.obtenerTodos()) {
+			System.out.println(p);
+		}
 	}
 }
