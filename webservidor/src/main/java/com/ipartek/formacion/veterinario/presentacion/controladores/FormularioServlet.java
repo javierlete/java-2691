@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleado;
-import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoSqlite;
+import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoJpa;
 import com.ipartek.formacion.veterinario.entidades.Empleado;
 
 import jakarta.servlet.ServletException;
@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FormularioServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3884456527233712355L;
-	private static final DaoEmpleado dao = DaoEmpleadoSqlite.getInstancia();
+	private static final DaoEmpleado dao = DaoEmpleadoJpa.getInstancia();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

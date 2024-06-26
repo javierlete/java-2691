@@ -3,7 +3,7 @@ package com.ipartek.formacion.veterinario.presentacion.controladores;
 import java.io.IOException;
 
 import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleado;
-import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoSqlite;
+import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoJpa;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class BorrarServlet extends HttpServlet {
 		
 		Long id = Long.parseLong(sId);
 		
-		DaoEmpleado dao = DaoEmpleadoSqlite.getInstancia();
+		DaoEmpleado dao = DaoEmpleadoJpa.getInstancia();
 		
 		dao.borrar(id);
 		

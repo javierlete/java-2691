@@ -3,7 +3,7 @@ package com.ipartek.formacion.veterinario.presentacion.controladores;
 import java.io.IOException;
 
 import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleado;
-import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoSqlite;
+import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoJpa;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class EmpleadosServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DaoEmpleado dao = DaoEmpleadoSqlite.getInstancia();
+		DaoEmpleado dao = DaoEmpleadoJpa.getInstancia();
 		
 		var empleados = dao.obtenerTodos();
 		
