@@ -40,11 +40,6 @@ class DaoEmpleadoTest {
 	}
 
 	@Test
-	void testObtenerTodos() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	void testObtenerPorId() {
 		Empleado e = dao.obtenerPorId(1000L);
 
@@ -57,27 +52,12 @@ class DaoEmpleadoTest {
 	}
 
 	@Test
-	void testInsertar() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testModificar() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	void testBorrar() {
 		dao.borrar(1L);
 		
 		assertEquals(1, DaoEmpleadoTreeMap.empleados.size());
 
 		assertThrows(AccesoDatosException.class, () -> dao.borrar(10L));
-	}
-
-	@Test
-	void testObtenerPorNif() {
-		fail("Not yet implemented");
 	}
 
 }
