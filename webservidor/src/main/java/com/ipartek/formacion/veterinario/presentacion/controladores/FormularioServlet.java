@@ -2,6 +2,7 @@ package com.ipartek.formacion.veterinario.presentacion.controladores;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Locale;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -61,6 +62,8 @@ public class FormularioServlet extends HttpServlet {
 		Empleado empleado = new Empleado(id, nombre, apellidos, nif, telefono, nss, sueldoMensual);
 
 		// 4. LÓGICA DE NEGOCIO
+		//Locale.setDefault(Locale.ENGLISH);		
+		
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         
@@ -88,7 +91,7 @@ public class FormularioServlet extends HttpServlet {
 		}
 
 		// 5. PREPARAR EL MODELO PARA LA SIGUIENTE VISTA
-
+		
 		// request.setAttribute("clave", valor);
 
 		// 6. SALTAR A LA SIGUIENTE VISTA (FORWARD/REDIRECT)

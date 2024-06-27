@@ -35,7 +35,7 @@ public class Persona implements Serializable {
 	private Long id;
 
 	@NotNull
-	@NotBlank
+	@NotBlank(message = "{persona.nombre.error.vacio}")
 	@Size(max = 50)
 	private String nombre;
 
