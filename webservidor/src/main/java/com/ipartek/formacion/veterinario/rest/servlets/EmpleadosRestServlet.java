@@ -139,7 +139,9 @@ public class EmpleadosRestServlet extends HttpServlet {
 			dic.put(par[0].trim(), par[1].trim());
 		}
 		
-		Empleado empleado = new Empleado(null, dic.get("nombre"), dic.get("apellidos"), dic.get("nif"), dic.get("telefono"), dic.get("nss"), new BigDecimal(dic.get("sueldoMensual")));
+		Long id = dic.get("id") == null ? null : Long.parseLong(dic.get("id"));
+		
+		Empleado empleado = new Empleado(id, dic.get("nombre"), dic.get("apellidos"), dic.get("nif"), dic.get("telefono"), dic.get("nss"), new BigDecimal(dic.get("sueldoMensual")));
 		return empleado;
 	}
 }
