@@ -61,6 +61,8 @@ public class EmpleadosRestServlet extends HttpServlet {
 
 		jsonb.toJson(e, out);
 		// enviarEmpleado(out, e);
+		
+		response.setStatus(HttpServletResponse.SC_CREATED);
 	}
 
 	@Override
@@ -89,6 +91,8 @@ public class EmpleadosRestServlet extends HttpServlet {
 		if (id != null) {
 			dao.borrar(id);
 		}
+		
+		response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 	}
 	
 	private Long getIdPath(HttpServletRequest request) {
