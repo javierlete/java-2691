@@ -10,6 +10,8 @@ import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleado;
 import com.ipartek.formacion.veterinario.accesodatos.DaoEmpleadoJpa;
 import com.ipartek.formacion.veterinario.entidades.Empleado;
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,6 +22,8 @@ import jakarta.servlet.http.HttpServletResponse;
 public class EmpleadosRestServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3884456527233712355L;
+	
+	private static final Jsonb jsonb = JsonbBuilder.create();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,11 +38,13 @@ public class EmpleadosRestServlet extends HttpServlet {
 
 			var empleados = dao.obtenerTodos();
 
-			enviarEmpleados(out, empleados);
+			jsonb.toJson(empleados, out);
+			// enviarEmpleados(out, empleados);
 		} else {
 			Empleado e = dao.obtenerPorId(id);
 
-			enviarEmpleado(out, e);
+			jsonb.toJson(e, out);
+			//enviarEmpleado(out, e);
 		}
 	}
 
@@ -47,13 +53,14 @@ public class EmpleadosRestServlet extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
-		Empleado empleado = extraerEmpleado(request);
+		Empleado empleado = jsonb.fromJson(request.getInputStream(), Empleado.class); //extraerEmpleado(request);
 
 		DaoEmpleado dao = DaoEmpleadoJpa.getInstancia();
 
 		var e = dao.insertar(empleado);
 
-		enviarEmpleado(out, e);
+		jsonb.toJson(e, out);
+		// enviarEmpleado(out, e);
 	}
 
 	@Override
@@ -61,13 +68,14 @@ public class EmpleadosRestServlet extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
-		Empleado empleado = extraerEmpleado(request);
+		Empleado empleado = jsonb.fromJson(request.getInputStream(), Empleado.class); //extraerEmpleado(request);
 
 		DaoEmpleado dao = DaoEmpleadoJpa.getInstancia();
 
 		var e = dao.modificar(empleado);
 
-		enviarEmpleado(out, e);
+		jsonb.toJson(e, out);
+		// enviarEmpleado(out, e);
 	}
 
 
@@ -89,6 +97,7 @@ public class EmpleadosRestServlet extends HttpServlet {
 		return pathInfo == null ? null : Long.parseLong(pathInfo.substring(1));
 	}
 
+	@SuppressWarnings("unused")
 	private void enviarEmpleados(PrintWriter out, Iterable<Empleado> empleados) {
 		out.write("[");
 	
@@ -115,6 +124,7 @@ public class EmpleadosRestServlet extends HttpServlet {
 				e.getId(), e.getNombre(), e.getApellidos(), e.getNif(), e.getNss(), e.getSueldoMensual());
 	}
 
+	@SuppressWarnings("unused")
 	private Empleado extraerEmpleado(HttpServletRequest request) throws IOException {
 		BufferedReader br = request.getReader();
 	

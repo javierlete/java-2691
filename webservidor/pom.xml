@@ -56,7 +56,8 @@
 			<version>3.0.1</version>
 		</dependency>
 
-		<!-- Lombok: nos aporta constructores, getters y setters, hashcode e equals, toString, y Builder -->
+		<!-- Lombok: nos aporta constructores, getters y setters, hashcode e
+		equals, toString, y Builder -->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -65,7 +66,8 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- JPA: Nos define como guardar y recuperar de la base de datos de forma sencilla -->
+		<!-- JPA: Nos define como guardar y recuperar de la base de datos de
+		forma sencilla -->
 
 		<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
 		<dependency>
@@ -98,6 +100,14 @@
 			<version>5.10.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.eclipse/yasson -->
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
