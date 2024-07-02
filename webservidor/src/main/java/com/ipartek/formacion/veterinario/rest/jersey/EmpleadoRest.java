@@ -7,12 +7,15 @@ import com.ipartek.formacion.veterinario.entidades.Empleado;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 @Path("/empleados")
 @Produces(MediaType.APPLICATION_JSON)
@@ -28,13 +31,18 @@ public class EmpleadoRest {
 	@GET
 	@Path("/{id}")
 	public Empleado getEmpleado(@PathParam("id") Long id) {
-		return dao.obtenerPorId(id);
+		Empleado empleado = dao.obtenerPorId(id);
+		if(empleado == null) {
+			throw new NotFoundException();
+		}
+		
+		return empleado;
 	}
 	
 	@POST
-	public Empleado insertar(Empleado e) {
+	public Response insertar(Empleado e) {
 		dao.insertar(e);
-		return e;
+		return Response.ok(e).status(Status.CREATED).build();
 	}
 	
 	@PUT
