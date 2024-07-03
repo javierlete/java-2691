@@ -5,9 +5,6 @@
 
     <persistence-unit name="com.ipartek.formacion.veterinario.entidades">
 
-        <class>com.ipartek.formacion.veterinario.entidades.Producto</class>
-        <class>com.ipartek.formacion.veterinario.entidades.Empleado</class>
-
         <properties>
             <!-- Database connection settings -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:C:/sqlite/hibernate.db" />
@@ -16,12 +13,14 @@
             <property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC" />
 
             <!-- Automatically export the schema -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="none" />
+<!--             <property name="jakarta.persistence.schema-generation.database.action" value="none" /> -->
 
             <!-- Echo all executed SQL to console -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.highlight_sql" value="true" />
+            <property name="hibernate.highlight_sql" value="false" />
+            
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
 
     </persistence-unit>
