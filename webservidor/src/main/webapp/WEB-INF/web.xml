@@ -5,6 +5,10 @@
         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
 	version="6.0" metadata-complete="false">
 
+	<welcome-file-list>
+		<welcome-file>productos</welcome-file>
+	</welcome-file-list>
+	
 	<servlet>
         <servlet-name>JerseyServlet</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
