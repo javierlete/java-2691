@@ -34,7 +34,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-sm-0">
-					<li class="nav-item"><a class="nav-link" href="index">Principal</a></li>
+					<li class="nav-item"><a class="nav-link" href="productos">Principal</a></li>
+					<c:forEach items="${categorias}" var="c">
+						<li class="nav-item"><a class="nav-link" href="categoria?id=${c.id}">${c.nombre}</a></li>
+					</c:forEach>
+					
 				</ul>
 
 				<ul class="navbar-nav mb-2 mb-sm-0">
