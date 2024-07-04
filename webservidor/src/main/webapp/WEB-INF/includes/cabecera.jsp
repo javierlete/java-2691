@@ -44,7 +44,8 @@
 				<ul class="navbar-nav mb-2 mb-sm-0">
 					<c:choose>
 						<c:when test="${sessionScope.email != null}">
-							<li class="nav-item"><a class="nav-link" href="admin/empleados">Administración</a></li>
+							<li class="nav-item"><a class="nav-link" href="admin/empleados">Empleados</a></li>
+							<li class="nav-item"><a class="nav-link" href="admin/formulario-producto">Añadir producto</a></li>
 							<li class="navbar-text">${sessionScope.email}</li>
 							<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
 						</c:when>
