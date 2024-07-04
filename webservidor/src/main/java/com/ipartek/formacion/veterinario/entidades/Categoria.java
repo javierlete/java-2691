@@ -14,7 +14,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 //LOMBOK
 @Data
@@ -34,6 +36,8 @@ public class Categoria {
 	@NotBlank
 	private String nombre;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@Builder.Default
 	@OneToMany(mappedBy = "categoria")
 	private Set<Producto> productos = new HashSet<>();
