@@ -32,7 +32,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Iterable<Producto> obtenerProductos(int pagina) {
-		return obtenerProductos(pagina, 10);
+		return obtenerProductos(pagina, 3);
 	}
 	
 	@Override
