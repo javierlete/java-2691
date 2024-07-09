@@ -3,6 +3,8 @@ package com.ipartek.formacion.spring.webservidorspring.entidades;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,6 +38,7 @@ public class Categoria {
 	@NotBlank
 	private String nombre;
 	
+	@JsonIgnore
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@Builder.Default
