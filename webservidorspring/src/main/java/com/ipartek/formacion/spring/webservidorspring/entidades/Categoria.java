@@ -1,38 +1,44 @@
-package com.ipartek.formacion.spring.webservidorspring.entides;
+package com.ipartek.formacion.spring.webservidorspring.entidades;
 
-import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-// LOMBOK
+//LOMBOK
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
-// JPA
+//JPA
 @Entity
-@Table(name = "productos")
-public class Producto {
+@Table(name = "categorias")
+public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nombre;
-	private String descripcion;
-	private BigDecimal precio;
-	private Integer stock;
-	
+
 	@NotNull
-	@ManyToOne
-	private Categoria categoria;
+	@NotBlank
+	private String nombre;
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@Builder.Default
+	@OneToMany(mappedBy = "categoria")
+	private Set<Producto> productos = new HashSet<>();
 }

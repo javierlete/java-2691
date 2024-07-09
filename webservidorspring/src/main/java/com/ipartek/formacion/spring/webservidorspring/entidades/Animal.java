@@ -1,4 +1,4 @@
-package com.ipartek.formacion.spring.webservidorspring.entides;
+package com.ipartek.formacion.spring.webservidorspring.entidades;
 
 import java.util.Objects;
 

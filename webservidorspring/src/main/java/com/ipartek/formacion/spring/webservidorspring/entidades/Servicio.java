@@ -1,4 +1,4 @@
-package com.ipartek.formacion.spring.webservidorspring.entides;
+package com.ipartek.formacion.spring.webservidorspring.entidades;
 
 import java.math.BigDecimal;
 import java.util.Objects;

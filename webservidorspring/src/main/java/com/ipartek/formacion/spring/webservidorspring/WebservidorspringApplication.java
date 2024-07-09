@@ -7,9 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.ipartek.formacion.spring.webservidorspring.entides.Categoria;
-import com.ipartek.formacion.spring.webservidorspring.entides.Empleado;
-import com.ipartek.formacion.spring.webservidorspring.entides.Producto;
+import com.ipartek.formacion.spring.webservidorspring.entidades.Categoria;
+import com.ipartek.formacion.spring.webservidorspring.entidades.Empleado;
+import com.ipartek.formacion.spring.webservidorspring.entidades.Producto;
 import com.ipartek.formacion.spring.webservidorspring.repositorios.CategoriaRepository;
 import com.ipartek.formacion.spring.webservidorspring.repositorios.EmpleadoRepository;
 import com.ipartek.formacion.spring.webservidorspring.repositorios.ProductoRepository;

@@ -1,4 +1,4 @@
-package com.ipartek.formacion.spring.webservidorspring.entides;
+package com.ipartek.formacion.spring.webservidorspring.entidades;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
