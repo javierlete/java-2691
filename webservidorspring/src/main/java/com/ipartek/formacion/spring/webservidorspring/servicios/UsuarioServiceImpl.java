@@ -1,6 +1,7 @@
 package com.ipartek.formacion.spring.webservidorspring.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ipartek.formacion.spring.webservidorspring.entidades.Categoria;
@@ -29,6 +30,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return productoRepo.findAll();
 	}
 
+	@Override
+	public Iterable<Producto> obtenerProductos(int pagina) {
+		return obtenerProductos(pagina, 10);
+	}
+	
+	@Override
+	public Iterable<Producto> obtenerProductos(int pagina, int tamano) {
+		return productoRepo.findAll(Pageable.ofSize(tamano).withPage(pagina));
+	}
+	
 	@Override
 	public Iterable<Producto> obtenerProductos(Long idCategoria) {
 		return productoRepo.findByCategoriaId(idCategoria);

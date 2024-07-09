@@ -3,7 +3,6 @@ package com.ipartek.formacion.spring.webservidorspring;
 import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -63,6 +62,17 @@ public class WebservidorspringApplication implements CommandLineRunner {
 		System.out.println(usuarioService.obtenerProductos(1L));
 		System.out.println(usuarioService.obtenerProductoPorId(1L));
 		
+		System.out.println("PAGINACIÓN 1");
+		
+		for(Producto p: usuarioService.obtenerProductos(0, 3)) {
+			System.out.println(p);
+		}
+		
+		System.out.println("PAGINACIÓN 2");
+		
+		for(Producto p: usuarioService.obtenerProductos(1, 3)) {
+			System.out.println(p);
+		}
 	}
 
 }
