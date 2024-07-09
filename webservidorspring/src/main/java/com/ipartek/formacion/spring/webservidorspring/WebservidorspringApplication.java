@@ -3,6 +3,7 @@ package com.ipartek.formacion.spring.webservidorspring;
 import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ import com.ipartek.formacion.spring.webservidorspring.entidades.Producto;
 import com.ipartek.formacion.spring.webservidorspring.repositorios.CategoriaRepository;
 import com.ipartek.formacion.spring.webservidorspring.repositorios.EmpleadoRepository;
 import com.ipartek.formacion.spring.webservidorspring.repositorios.ProductoRepository;
+import com.ipartek.formacion.spring.webservidorspring.servicios.UsuarioService;
 
 @SpringBootApplication
 public class WebservidorspringApplication implements CommandLineRunner {
@@ -30,8 +32,12 @@ public class WebservidorspringApplication implements CommandLineRunner {
 	@Autowired
 	private ProductoRepository productoRepo;
 	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	@Override
 	public void run(String... args) throws Exception {
+		// Prueba repositorios
 		empleadoRepo.save(Empleado.builder().id(1L).nombre("pepe").apellidos("perez").nif("12345678Z").nss("12345123451").sueldoMensual(new BigDecimal(12345.12)).build());
 
 		System.out.println(empleadoRepo.findByNif("12345678Z"));
@@ -47,6 +53,16 @@ public class WebservidorspringApplication implements CommandLineRunner {
 		System.out.println(cat.getProductos());
 		
 		System.out.println(productoRepo.count());
+		
+		// Prueba servicios
+		
+		System.out.println("SERVICIOS");
+		
+		System.out.println(usuarioService.obtenerCategorias());
+		System.out.println(usuarioService.obtenerProductos());
+		System.out.println(usuarioService.obtenerProductos(1L));
+		System.out.println(usuarioService.obtenerProductoPorId(1L));
+		
 	}
 
 }
