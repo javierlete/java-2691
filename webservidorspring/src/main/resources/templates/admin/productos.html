@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Administración</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h1>Productos</h1>
+	<ul>
+		<li th:each="producto: ${productos}" >
+			<span th:text="${producto.nombre + ': ' + producto.precio + ' €'}">Producto1: 1234.56€</span>
+			<a href="#" th:href="@{/admin/producto/{id}(id=${producto.id})}">Editar</a>
+			<a href="#" th:href="@{/admin/producto/borrar/{id}(id=${producto.id})}">Borrar</a>
+			
+		</li>
+	</ul>
+
+<p><a href="#" th:href="@{/admin/producto}">Añadir</a></p>
+			
+</body>
+
+</html>

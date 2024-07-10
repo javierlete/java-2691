@@ -1,6 +1,7 @@
 package com.ipartek.formacion.spring.webservidorspring.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import lombok.extern.java.Log;
 
 @Log
 @Service
+@Primary
 public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	private CategoriaRepository categoriaRepo;
