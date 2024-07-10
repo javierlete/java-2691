@@ -10,12 +10,13 @@ For further reference, please consider the following sections:
 * [Validation](https://docs.spring.io/spring-boot/docs/3.3.1/reference/htmlsingle/index.html#io.validation)
 * [Rest Repositories](https://docs.spring.io/spring-boot/docs/3.3.1/reference/htmlsingle/index.html#howto.data-access.exposing-spring-data-repositories-as-rest)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/3.3.1/reference/htmlsingle/index.html#web)
+* [Thymeleaf](https://docs.spring.io/spring-boot/docs/3.3.1/reference/htmlsingle/index.html#web.servlet.spring-mvc.template-engines)
 
 ### Guides
 The following guides illustrate how to use some features concretely:
 
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Handling form submission](https://spring.io/guides/gs/handling-form-submission)
+* [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
 * [Validation](https://spring.io/guides/gs/validating-form-input/)
 
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)

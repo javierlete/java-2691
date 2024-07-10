@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Hola Mundo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<ul>
+		<li th:each="categoria: ${categorias}">
+			<a href="#" th:href="@{/categorias/{id}(id=${categoria.id})}" th:text="${categoria.nombre}">Categoría1</a>
+		</li>
+	</ul>
+
+	<ul>
+		<li th:each="producto: ${productos}" th:text="${producto.nombre + ': ' + producto.precio + ' €'}">Producto1: 1234.56€</li>
+	</ul>
+
+</body>
+
+</html>
