@@ -12,33 +12,35 @@
 
 	<pre th:text="${producto}"></pre>
 
-	<form action="#" th:action="@{/admin/producto}" method="post">
+	<form action="#" th:action="@{/admin/producto}" method="post" th:object="${producto}">
 		<input type="hidden" name="id" th:value="${producto.id}" />
 		<div>
-			<label for="nombre">Nombre</label> <input type="text" name="nombre"
-				id="nombre" th:value="${producto.nombre}" />
+			<label for="nombre">Nombre</label> <input type="text" th:field="*{nombre}" />
+			<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
 		</div>
 		<div>
 			<label for="descripcion">Descripción</label>
-			<textarea name="descripcion" id="descripcion"
-				th:text="${producto.descripcion}"></textarea>
+			<textarea th:field="*{descripcion}"></textarea>
+			<span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></span>
 		</div>
 		<div>
-			<label for="precio">Precio</label> <input type="text" name="precio"
-				id="precio" th:value="${producto.precio}" />
+			<label for="precio">Precio</label> <input type="number" step=".01" th:field="*{precio}" />
+			<span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></span>
 		</div>
 		<div>
-			<label for="stock">Stock</label> <input type="text" name="stock"
-				id="stock" th:value="${producto.stock}" />
+			<label for="stock">Stock</label> <input type="number" th:field="*{stock}" />
+			<span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></span>
 		</div>
 		<div>
-			<label for="categoria">Categoría</label> <select name="categoria"
-				id="categoria">
-				<option th:each="c: ${categorias}" th:value="${c.id}"
-					th:text="${c.nombre}"
-					th:selected="${c.id == producto?.categoria?.id}">Categoría
+			<label for="fechaCaducidad">Fecha de caducidad</label> <input type="date" th:field="*{fechaCaducidad}" />
+			<span th:if="${#fields.hasErrors('fechaCaducidad')}" th:errors="*{fechaCaducidad}"></span>
+		</div>
+		<div>
+			<label for="categoria">Categoría</label> <select th:field="*{categoria}">
+				<option th:each="c: ${categorias}" th:value="${c.id}" th:text="${c.nombre}">Categoría
 					1</option>
 			</select>
+			<span th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></span>
 		</div>
 		<input type="submit" value="Guardar" />
 	</form>

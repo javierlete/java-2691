@@ -3,6 +3,7 @@ package com.ipartek.formacion.spring.webservidorspring.presentacion.controladore
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ipartek.formacion.spring.webservidorspring.entidades.Producto;
 import com.ipartek.formacion.spring.webservidorspring.servicios.AdminService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
@@ -38,7 +41,12 @@ public class AdminController {
 	}
 	
 	@PostMapping("/producto") 
-	public String guardarProducto(Producto producto) {
+	public String guardarProducto(@Valid Producto producto, BindingResult bindingResult, Model modelo) {
+		if(bindingResult.hasErrors()) {
+			modelo.addAttribute("categorias", adminService.obtenerCategorias());
+			return "admin/producto";
+		}
+		
 		if(producto.getId() == null) {
 			adminService.altaProducto(producto);
 		} else {
