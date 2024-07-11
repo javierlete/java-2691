@@ -27,6 +27,10 @@ public class UsuarioController {
 		return "index";
 	}
 	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 	
 	@GetMapping("/hola")
 	public String holaMundo(String nombre, Model modelo) {

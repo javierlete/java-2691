@@ -9,14 +9,31 @@
 
 <body>
 
+	<h1>Ejemplo Spring</h1>
+
 	<ul>
-		<li th:each="categoria: ${categorias}">
-			<a href="#" th:href="@{/categorias/{id}(id=${categoria.id})}" th:text="${categoria.nombre}">Categoría1</a>
+		<li><a href="#" th:href="@{/login}">Inicia sesión</a></li>
+		<li>
+			<form th:action="@{/logout}" method="post">
+				<button>Cerrar sesión</button>
+			</form>
+		</li>
+		<li><a href="#" th:href="@{/admin/productos}">Administración</a>
 		</li>
 	</ul>
 
+
+
 	<ul>
-		<li th:each="producto: ${productos}" th:text="${producto.nombre + ': ' + producto.precio + ' €'}">Producto1: 1234.56€</li>
+		<li th:each="categoria: ${categorias}"><a href="#"
+			th:href="@{/categorias/{id}(id=${categoria.id})}"
+			th:text="${categoria.nombre}">Categoría1</a></li>
+	</ul>
+
+	<ul>
+		<li th:each="producto: ${productos}"
+			th:text="${producto.nombre + ': ' + producto.precio + ' €'}">Producto1:
+			1234.56€</li>
 	</ul>
 
 </body>

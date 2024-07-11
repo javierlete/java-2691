@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Ejemplo Spring</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<h1>Login</h1>
+	
+	<p th:if="${param.error}">Usuario o contraseña incorrectos</p>
+	<p th:if="${param.logout}">Has cerrado la sesión</p>
+
+	<form action="#" th:action="@{/login}" method="post">
+		Usuario: <input type="text" name="username" />
+		Contraseña: <input type="password" name="password" />
+		<button>Inicio sesión</button>
+	</form>
+
+</body>
+
+</html>
