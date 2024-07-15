@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title th:replace="${titulo}">Web Servidor Spring</title>
 <base href="/" th:href="@{/}">
-<link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"
+	rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg bg-dark mb-4" data-bs-theme="dark">
@@ -27,6 +28,8 @@
 				<ul class="navbar-nav mb-2 mb-lg-0">
 					<li class="nav-item" sec:authorize="hasRole('ADMIN')"><a
 						class="nav-link" href="#" th:href="@{/admin/productos}">Administración</a></li>
+					<li class="nav-item"><a href="#" class="nav-link"
+						data-bs-toggle="offcanvas" data-bs-target="#carrito">Carrito</a></li>
 					<li class="navbar-text" sec:authorize="isAuthenticated()"
 						sec:authentication="name">USUARIO</li>
 					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
@@ -40,10 +43,26 @@
 			</div>
 		</div>
 	</nav>
+
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="carrito">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+				aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<ul class="list-group">
+				<li th:each="producto: ${carrito.productos}" th:text="${producto.nombre}" class="list-group-item">Item 1</li>
+			</ul>
+		</div>
+	</div>
+
 	<div th:replace="${contenido}">
 		<p>CONTENIDO</p>
 	</div>
-	<footer class="text-bg-dark p-2 mt-5"> &copy;2024 Javier Lete </footer>
-	<script src="js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<footer class="text-bg-dark p-2 mt-5"> &copy;2024 Javier Lete
+	</footer>
+	<script src="js/bootstrap.bundle.min.js"
+		th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
