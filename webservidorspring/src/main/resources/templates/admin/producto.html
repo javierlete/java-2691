@@ -1,49 +1,72 @@
 <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <title>Administración</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
-<body>
+<main class="container">
 	<h1>Formulario producto</h1>
 
-	<pre th:text="${producto}"></pre>
-
-	<form action="#" th:action="@{/admin/producto}" method="post" th:object="${producto}">
+	<form action="#" th:action="@{/admin/producto}" method="post"
+		th:object="${producto}">
 		<input type="hidden" name="id" th:value="${producto.id}" />
-		<div>
-			<label for="nombre">Nombre</label> <input type="text" th:field="*{nombre}" />
-			<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+		<div class="row mb-2">
+			<label class="col-sm-2 col-form-label" for="nombre">Nombre</label>
+			<div class="col">
+				<input class="form-control" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'" type="text" th:field="*{nombre}" />
+			<span class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+			</div>
 		</div>
-		<div>
-			<label for="descripcion">Descripción</label>
-			<textarea th:field="*{descripcion}"></textarea>
-			<span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></span>
-		</div>
-		<div>
-			<label for="precio">Precio</label> <input type="number" step=".01" th:field="*{precio}" />
-			<span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></span>
-		</div>
-		<div>
-			<label for="stock">Stock</label> <input type="number" th:field="*{stock}" />
-			<span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></span>
-		</div>
-		<div>
-			<label for="fechaCaducidad">Fecha de caducidad</label> <input type="date" th:field="*{fechaCaducidad}" />
-			<span th:if="${#fields.hasErrors('fechaCaducidad')}" th:errors="*{fechaCaducidad}"></span>
-		</div>
-		<div>
-			<label for="categoria">Categoría</label> <select th:field="*{categoria}">
-				<option th:each="c: ${categorias}" th:value="${c.id}" th:text="${c.nombre}">Categoría
-					1</option>
-			</select>
-			<span th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></span>
-		</div>
-		<input type="submit" value="Guardar" />
-	</form>
-</body>
+		<div class="row mb-2">
+			<label class="col-sm-2 col-form-label" for="descripcion">Descripción</label>
 
-</html>
+			<div class="col">
+				<textarea class="form-control" th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid'" th:field="*{descripcion}"></textarea>
+			<span class="invalid-feedback" th:if="${#fields.hasErrors('descripcion')}"
+				th:errors="*{descripcion}"></span>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<label class="col-sm-2 col-form-label" for="precio">Precio</label>
+			<div class="col">
+				<input class="form-control" th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid'" type="number" step=".01"
+					th:field="*{precio}" />
+			<span class="invalid-feedback" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></span>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<label class="col-sm-2 col-form-label" for="stock">Stock</label>
+			<div class="col">
+				<input class="form-control" th:classappend="${#fields.hasErrors('stock')} ? 'is-invalid'" type="number" th:field="*{stock}" />
+			<span class="invalid-feedback" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></span>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<label class="col-sm-2 col-form-label" for="fechaCaducidad">Fecha
+				de caducidad</label>
+			<div class="col">
+				<input class="form-control" th:classappend="${#fields.hasErrors('fechaCaducidad')} ? 'is-invalid'" type="date" th:field="*{fechaCaducidad}" />
+			<span class="invalid-feedback" th:if="${#fields.hasErrors('fechaCaducidad')}"
+				th:errors="*{fechaCaducidad}"></span>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<label class="col-sm-2 col-form-label" for="categoria">Categoría</label>
+			<div class="col">
+				<select class="form-select" th:field="*{categoria}" th:classappend="${#fields.hasErrors('categoria')} ? 'is-invalid'">
+					<option th:each="c: ${categorias}" th:value="${c.id}"
+						th:text="${c.nombre}">Categoría 1</option>
+				</select> <span class="invalid-feedback" th:if="${#fields.hasErrors('categoria')}"
+					th:errors="*{categoria}"></span>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<div class="offset-sm-2 col">
+				<button class="btn btn-primary" type="submit">Guardar</button>
+			</div>
+		</div>
+	</form>
+</main>

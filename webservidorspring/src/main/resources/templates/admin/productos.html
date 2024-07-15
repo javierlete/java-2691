@@ -1,25 +1,47 @@
 <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org">
-
-<head>
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
 <title>Administración</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-
-<body>
+<main>
 	<h1>Productos</h1>
-	<ul>
-		<li th:each="producto: ${productos}" >
-			<span th:text="${producto.nombre + ': ' + producto.precio + ' €'}">Producto1: 1234.56€</span>
-			<a href="#" th:href="@{/admin/producto/{id}(id=${producto.id})}">Editar</a>
-			<a href="#" th:href="@{/admin/producto/borrar/{id}(id=${producto.id})}">Borrar</a>
-			
-		</li>
-	</ul>
-
-<p><a href="#" th:href="@{/admin/producto}">Añadir</a></p>
-			
-</body>
-
-</html>
+	<table class="table table-hover table-striped table-bordered">
+		<thead class="table-dark">
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Fecha de caducidad</th>
+				<th>Stock</th>
+				<th>Categoría</th>
+				<th>OPCIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="producto: ${productos}">
+				<td th:text="${producto.id}">Id</td>
+				<td th:text="${producto.nombre}">Nombre</td>
+				<td th:text="${producto.precio}">Precio</td>
+				<td th:text="${producto.fechaCaducidad}">Fecha de caducidad</td>
+				<td th:text="${producto.stock}">Stock</td>
+				<td th:text="${producto.categoria.nombre}">Categoría</td>
+				<td><a class="btn btn-primary btn-sm" href="#"
+					th:href="@{/admin/producto/{id}(id=${producto.id})}">Editar</a> <a
+					href="#" class="btn btn-danger btn-sm"
+					th:href="@{/admin/producto/borrar/{id}(id=${producto.id})}">Borrar</a>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot class="table-dark">
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Fecha de caducidad</th>
+				<th>Stock</th>
+				<th>Categoría</th>
+				<th><a class="btn btn-primary btn-sm" href="#"
+					th:href="@{/admin/producto}">Añadir</a></th>
+			</tr>
+		</tfoot>
+	</table>
+</main>
