@@ -37,4 +37,9 @@ public class UsuarioController {
 		modelo.addAttribute("mensaje", "Hola " + nombre);
 		return "hola";
 	}
+	
+	@GetMapping("/principal")
+	public String principal() {
+		return "principal";
+	}
 }
