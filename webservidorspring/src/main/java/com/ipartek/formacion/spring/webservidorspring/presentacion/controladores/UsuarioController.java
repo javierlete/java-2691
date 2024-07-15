@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.ipartek.formacion.spring.webservidorspring.entidades.Carrito;
 import com.ipartek.formacion.spring.webservidorspring.servicios.UsuarioService;
 
 @Controller
@@ -30,6 +31,12 @@ public class UsuarioController {
 	@GetMapping("/login")
 	public String login() {
 		return "login";
+	}
+	
+	@GetMapping("/carrito/agregar/{id}")
+	public String carrito(@PathVariable Long id, Carrito carrito) {
+		carrito.agregar(servicio.obtenerProductoPorId(id));
+		return "redirect:/";
 	}
 	
 	@GetMapping("/hola")
