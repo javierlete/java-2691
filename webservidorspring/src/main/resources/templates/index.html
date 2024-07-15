@@ -3,6 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <title>Ejemplo Spring</title>
+
 <main class="container">
 	<ul class="nav nav-tabs">
 		<li th:each="categoria: ${categorias}"><a class="nav-link"
@@ -10,17 +11,23 @@
 			th:text="${categoria.nombre}">Categoría1</a></li>
 	</ul>
 
-	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+	<div
+		class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
 		<div th:each="producto: ${productos}" class="col">
 			<div class="card h-100">
-				<img src="https://picsum.photos/400/300" class="card-img-top" alt="...">
+				<img src="https://picsum.photos/400/300" class="card-img-top"
+					alt="...">
 				<div class="card-body">
 					<h5 class="card-title" th:text="${producto.nombre}">Card title</h5>
 					<p class="card-text" th:text="${producto.descripcion}"></p>
 					<p class="card-text" th:text="${producto.precio}"></p>
+					<p class="card-text">
+						<a href="#" th:href="@{/carrito/agregar/{id}(id=${producto.id})}" class="btn btn-primary">Añadir al carrito</a>
+					</p>
 				</div>
 				<div class="card-footer">
-					<small class="text-body-secondary" th:text="${producto.fechaCaducidad}"></small>
+					<small class="text-body-secondary"
+						th:text="${producto.fechaCaducidad}"></small>
 				</div>
 			</div>
 		</div>
