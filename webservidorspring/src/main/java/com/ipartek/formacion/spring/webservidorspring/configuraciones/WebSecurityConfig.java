@@ -33,7 +33,13 @@ public class WebSecurityConfig {
 	public void configureGlobal()
 	  throws Exception {
 	    auth.jdbcAuthentication()
-	      .dataSource(dataSource);
+	      .dataSource(dataSource)
+	      .usersByUsernameQuery("select email,password,1 "
+	        + "from usuarios "
+	        + "where email = ?")
+	      .authoritiesByUsernameQuery("select email,CONCAT('ROLE_',rol) "
+	        + "from usuarios "
+	        + "where email = ?");
 //	      .withUser(User.withUsername("javier")
 //	        .password(passwordEncoder.encode("contrasena"))
 //	        .roles("ADMIN"));
