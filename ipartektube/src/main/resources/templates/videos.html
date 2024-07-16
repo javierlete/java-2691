@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es"
+	th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<title>Principal</title>
+<main class="container-fluid">
+	<div class="row row-cols-1 row-cols-md-3 g-4">
+		<div th:each="video: ${videos}" th:object="${video}" class="col">
+			<div class="card h-100">
+				<div class="ratio ratio-16x9">
+					<iframe th:src="*{url}"
+						src="https://www.youtube.com/embed/SVOuYquXuuc?si=dN5iQRVUg9khXMYD"
+						title="YouTube video player"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">
+						<a href="#" th:href="@{/videos/{id}(id=*{id})}"
+							th:text="*{titulo}">Título del video</a>
+					</h5>
+					<p class="card-text" th:text="*{descripcion}">This is a wider
+						card with supporting text below as a natural lead-in to additional
+						content. This content is a little bit longer.</p>
+				</div>
+				<div class="card-footer text-end" sec:authorize="hasRole('USER')">
+					<a class="btn-lg btn btn-primary" href="#"><i class="bi bi-pencil-square"></i></a>
+					<a class="btn-lg btn btn-danger" href="#"><i class="bi bi-trash"></i></a>
+				</div>
+
+			</div>
+		</div>
+		
+		
+		<div class="col">
+			<div class="card h-100">
+				<div class="ratio ratio-16x9 text-center">
+					<i class="bi bi-plus-circle" style="font-size: 10rem"></i>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">
+						<a href="#" class="stretched-link">Añadir video</a>
+					</h5>
+					<p class="card-text">Añade tu propio video</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

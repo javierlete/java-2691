@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es"
+	th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
+<title>Principal</title>
+<main class="container">
+	<div class="row">
+		<div th:object="${video}" class="offset-sm-1 col-sm-10">
+			<div class="card h-100">
+				<div class="ratio ratio-16x9">
+					<iframe th:src="*{url}"
+						src="https://www.youtube.com/embed/SVOuYquXuuc?si=dN5iQRVUg9khXMYD"
+						title="YouTube video player"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title" th:text="*{titulo}">Card title</h5>
+					<p class="card-text" th:text="*{descripcion}">This is a wider
+						card with supporting text below as a natural lead-in to additional
+						content. This content is a little bit longer.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
