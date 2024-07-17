@@ -37,7 +37,7 @@ public class Video {
 	@NotNull
 	@NotBlank
 	@Size(max = 255)
-	@Pattern(regexp = "^https://www.youtube.com/embed/[a-zA-Z0-9]+$", message = "URL no válida")
+	@Pattern(regexp = "^https://www.youtube.com/embed/[a-zA-Z0-9_]+$", message = "URL no válida")
 	private String url;
 	
 	@Lob
