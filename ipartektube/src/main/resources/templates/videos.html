@@ -25,22 +25,22 @@
 						content. This content is a little bit longer.</p>
 				</div>
 				<div class="card-footer text-end" sec:authorize="hasRole('USER')">
-					<a class="btn-lg btn btn-primary" href="#"><i class="bi bi-pencil-square"></i></a>
-					<a class="btn-lg btn btn-danger" href="#"><i class="bi bi-trash"></i></a>
+					<a aria-label="Editar" class="btn-lg btn btn-primary" href="#" th:href="@{/usuarios-registrados/formulario/{id}(id=*{id})}"><i class="bi bi-pencil-square"></i></a>
+					<a aria-label="Borrar" onclick="return confirm('¿Deseas borrar el video?')" class="btn-lg btn btn-danger" href="#" th:href="@{/usuarios-registrados/borrar/{id}(id=*{id})}"><i class="bi bi-trash"></i></a>
 				</div>
 
 			</div>
 		</div>
 		
 		
-		<div class="col">
+		<div sec:authorize="hasRole('USER')" class="col">
 			<div class="card h-100">
 				<div class="ratio ratio-16x9 text-center">
 					<i class="bi bi-plus-circle" style="font-size: 10rem"></i>
 				</div>
 				<div class="card-body">
 					<h5 class="card-title">
-						<a href="#" class="stretched-link">Añadir video</a>
+						<a href="#" class="stretched-link" th:href="@{/usuarios-registrados/formulario}">Añadir video</a>
 					</h5>
 					<p class="card-text">Añade tu propio video</p>
 				</div>
