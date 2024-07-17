@@ -8,6 +8,7 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +37,7 @@ public class Video {
 	@NotNull
 	@NotBlank
 	@Size(max = 255)
+	@Pattern(regexp = "^https://www.youtube.com/embed/[a-zA-Z0-9]+$", message = "URL no válida")
 	private String url;
 	
 	@Lob
